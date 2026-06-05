@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 日记 Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="diary-shell">
+      <section class="phone" aria-label="AI 日记功能 demo">
+        <section class="screen diary-screen active" id="screen-diary">
+          <header class="page-head">
+            <button class="ghost-btn" type="button" aria-label="返回">‹</button>
+            <div>
+              <p>My Journal</p>
+              <h1>我的日记</h1>
+            </div>
+            <button class="small-pill" type="button" data-go="tree">月</button>
+          </header>
+
+          <div class="week-switch">
+            <button type="button">‹</button>
+            <strong>2026年第12周</strong>
+            <button type="button">›</button>
+          </div>
+
+          <div class="calendar-row" aria-label="本周日期">
+            <span>日<em>22</em></span>
+            <span>一<em>23</em></span>
+            <span class="has-log">二<em>24</em></span>
+            <span class="has-log">三<em>25</em></span>
+            <span class="has-log">四<em>26</em></span>
+            <span class="selected">五<em>27</em></span>
+            <span>六<em>28</em></span>
+          </div>
+
+          <div class="range-tabs">
+            <button class="active" type="button">本周</button>
+            <button type="button">本月</button>
+          </div>
+
+          <article class="ai-summary">
+            <div class="summary-meta">
+              <span>3月22日 - 28日</span>
+              <span>10天 · 1301字</span>
+            </div>
+            <p id="ai-summary-text">
+              这段日子里，你从第一次打招呼开始熟悉啦。你分享过升温时想煮番茄鸡蛋面的小期待，也记录了工作压力大时偷偷放慢呼吸的瞬间。那些小小的生活皱褶，都藏着温暖的光。
+            </p>
+            <button class="text-link" type="button" id="regenerate-summary">重新生成</button>
+          </article>
+
+          <div class="entry-list">
+            <article class="entry-card">
+              <time>16:30</time>
+              <span>117字</span>
+              <p>还有两小时就下班啦。本来今天打算继续捣鼓空气炸锅做蛋糕，结果下午被老板突然拉去谈话了。</p>
+            </article>
+            <article class="entry-card">
+              <time>14:40</time>
+              <span>158字</span>
+              <p>终于到周五啦。明天要跟朋友见面，突然有点期待，也有点想躲回自己的小房间。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen tree-screen" id="screen-tree">
+          <header class="page-head">
+            <button class="ghost-btn" type="button" data-go="diary">‹</button>
+            <div>
+              <p>Daily Seed</p>
+              <h1>种一棵情绪小树</h1>
+            </div>
+            <button class="small-pill" type="button" data-go="write">打卡</button>
+          </header>
+
+          <article class="tree-hero">
+            <div class="tree-stage" id="tree-stage">
+              <i></i>
+            </div>
+            <div>
+              <p>连续记录 18 天</p>
+              <h2>扎根中</h2>
+              <span>根已经越扎越深了</span>
+            </div>
+          </article>
+
+          <div class="color-picker" aria-label="选择小树颜色">
+            <button class="active" type="button" data-tree-color="green"></button>
+            <button type="button" data-tree-color="purple"></button>
+            <button type="button" data-tree-color="blue"></button>
+            <button type="button" data-tree-color="rose"></button>
+          </div>
+
+          <div class="growth-list">
+            <article>
+              <div class="mini-tree seed"></div>
+              <div><strong>小树苗</strong><p>第 7-13 天 · 开始晓得到阳光了</p></div>
+            </article>
+            <article class="active">
+              <div class="mini-tree root"></div>
+              <div><strong>扎根中</strong><p>第 14-29 天 · 根已经越扎越深了</p></div>
+            </article>
+            <article>
+              <div class="mini-tree young"></div>
+              <div><strong>一棵小树</strong><p>第 30-59 天 · 故事长成了枝丫</p></div>
+            </article>
+            <article>
+              <div class="mini-tree lush"></div>
+              <div><strong>枝繁叶茂</strong><p>第 60-119 天 · 记忆撑起了树冠</p></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen schedule-screen" id="screen-schedule">
+          <div class="segment">
+            <button class="active" type="button">Daily</button>
+            <button type="button">Weekly</button>
+            <button type="button">Monthly</button>
+          </div>
+          <div class="date-nav">
+            <button type="button">‹</button>
+            <strong>SAT · APR 25</strong>
+            <button type="button">›</button>
+          </div>
+          <article class="day-board">
+            <p>SATURDAY · 25 · 04 · 2026</p>
+            <h2><span>25<sup>th</sup></span> April · Journal</h2>
+            <div class="timeline">
+              <span>12 AM</span>
+              <div class="block sleep"><strong>Sleep</strong><em>12:30 am - 6:50 am</em><p>Sleep covered a longer stretch of the day.</p></div>
+              <span>8 AM</span>
+              <div class="block quiet"><strong>深呼吸</strong><em>tap for details</em></div>
+              <span>9 AM</span>
+              <div class="block breakfast"><strong>Breakfast</strong><em>8:35 am - 8:55 am</em></div>
+              <span>10 AM</span>
+              <div class="block work"><strong>Deep Work</strong><em>10 am - 12:10 pm</em><p>把混乱的念头整理成了一页草稿。</p><b>Meeting</b></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="screen notes-screen" id="screen-notes">
+          <header class="page-head">
+            <button class="ghost-btn" type="button" data-go="diary">‹</button>
+            <div>
+              <p>Sticky Wall</p>
+              <h1>便签墙</h1>
+            </div>
+            <button class="ghost-btn" type="button" aria-label="更多">···</button>
+          </header>
+          <div class="note-grid">
+            <article class="note peach"><i></i><p>真的好困但睡不着。好累呀，每天都好累。</p><span>夏七月 05-10</span></article>
+            <article class="note yellow"><i></i><p>凌晨夜骑回到家，楼下一个人都没有。</p><span>匿名 05-10</span></article>
+            <article class="note cream"><i></i><p>刚合上电脑，这个点还在墙上写字的大概都欠睡眠一个正式道歉。</p><span>周处 05-10</span></article>
+            <article class="note purple"><i></i><p>雨声倾盆如海，残局黑白未解。今晚榻侧无眠，只余一炉香。</p><span>匿名 05-10</span></article>
+            <article class="note cream"><i></i><p>总有一些话在纸上写得工整，到嘴边就变成了“茶凉了”。</p><span>匿名 05-10</span></article>
+            <article class="note peach small"><i></i><p>测试天边除去了我的黑眼圈。</p><span>眼圈</span></article>
+          </div>
+          <button class="float-pen" type="button" data-go="write" aria-label="写便签"></button>
+        </section>
+
+        <section class="screen hole-screen" id="screen-hole">
+          <article class="memory-page">
+            <header>
+              <h1>拾遗集</h1>
+              <p>2025/09/04</p>
+            </header>
+            <div class="receipt">
+              <p>-- 便利店收据 --</p>
+              <strong>草莓味牛奶 ×1 ··· ¥1,500</strong>
+              <em>她还是和小时候一样，喜欢草莓味的一切。</em>
+            </div>
+            <div class="paper-note">“下雨了，又降温了。”<br />姐姐，不喜欢下雨天，打给你听。</div>
+            <div class="emotion-score">
+              <p><span>难过指数</span><b>☆☆☆☆☆</b></p>
+              <p><span>思念指数</span><b>★★★★★</b></p>
+              <p><span>执念指数</span><b>★★★★★</b></p>
+              <p><span>情绪备注</span><em>这仍是在便利店里的小秘密。</em></p>
+            </div>
+            <div class="page-actions">
+              <button type="button">← 上一页</button>
+              <button type="button">下一页 →</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="screen write-screen" id="screen-write">
+          <header class="write-head">
+            <button type="button" data-go="notes">能量便签</button>
+            <button type="button">关闭</button>
+          </header>
+          <article class="writing-paper">
+            <p class="lead">凌晨夜骑回到家，楼下一个人都没有</p>
+            <p>路灯比我先到，影子陪我停了一会儿。刚才还挺想发消息的，硬是在又想泡一碗辣白菜拉面。</p>
+            <p>便利店应该还开着吧，一算了，这个点微波炉都该休息了。</p>
+            <footer>Alan · 2026-05-10 02:46</footer>
+          </article>
+          <section class="comment-box">
+            <h2>评论</h2>
+            <div class="comment"><strong>神野</strong><span>5/10 09:02</span><p>凌晨夜骑回来，楼下没人但有路灯，这个我熟。</p></div>
+            <label>
+              <textarea placeholder="写评论"></textarea>
+            </label>
+            <div class="comment-actions">
+              <label><input type="checkbox" /> 匿名</label>
+              <button type="button">发送</button>
+            </div>
+          </section>
+        </section>
+
+        <nav class="bottom-nav" aria-label="AI 日记导航">
+          <button class="active" type="button" data-go="diary"><span></span>日记</button>
+          <button type="button" data-go="schedule"><span></span>日程</button>
+          <button type="button" data-go="notes"><span></span>便签</button>
+          <button type="button" data-go="hole"><span></span>树洞</button>
+          <button type="button" data-go="write"><span></span>写作</button>
+        </nav>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
