@@ -1,5 +1,17 @@
-# AI Diary
+# 时光回响 AI 日记 Demo
 
-This folder is reserved for the AI diary demo module.
+这个文件夹用于独立存放 AI 日记功能 demo，不影响主产品 demo。
 
-All AI diary related pages, styles, scripts, prompts, and visual assets should be placed here so the feature can evolve independently from the existing main demo sections.
+当前版本依据商业 BP 调整为“AI 日记及个人成长管理平台”的表达，重点展示：
+
+- 十秒快速记录
+- AI 每日复盘
+- 人生课题台账
+- 自然语言长期记忆检索
+- 年度成长白皮书
+- 非诊断心理健康边界与隐私控制
+- 成长会员、深度会员与企业匿名洞察的商业化线索
+
+本地预览地址：
+
+`http://127.0.0.1:8000/AI_Diary/index.html`

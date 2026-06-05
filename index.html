@@ -3,74 +3,210 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI 日记 Demo</title>
+    <title>时光回响 AI 日记 Demo</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="diary-shell">
       <section class="phone" aria-label="AI 日记功能 demo">
+        <section class="entry-screen" id="entry-screen" aria-label="产品进入界面">
+          <iframe
+            class="entry-frame"
+            src="Enter/output/animated-night-stars.html"
+            title="星空树影与哲理文字进入界面"
+            aria-hidden="true"
+          ></iframe>
+          <button class="entry-action" type="button" id="entry-action">进入</button>
+        </section>
+
+        <section class="account-screen hidden" id="account-screen" aria-label="登录界面">
+          <div class="account-illustration" aria-hidden="true">
+            <div class="account-window">
+              <span class="account-face"></span>
+            </div>
+            <span class="bird bird-left"></span>
+            <span class="bird bird-right"></span>
+            <span class="bird bird-low"></span>
+          </div>
+
+          <form class="account-card" id="account-form">
+            <h2 id="account-title">Welcome</h2>
+
+            <label class="account-field">
+              <span class="account-icon">◎</span>
+              <input type="text" id="account-username" name="username" autocomplete="username" placeholder="请输入用户名" />
+            </label>
+
+            <label class="account-field">
+              <span class="account-icon">⌕</span>
+              <input
+                type="password"
+                id="account-password"
+                name="password"
+                autocomplete="current-password"
+                placeholder="请输入密码"
+              />
+            </label>
+
+            <label class="agreement-row">
+              <input type="checkbox" id="account-agreement" />
+              <span>我已阅读并同意《用户协议》和《隐私政策》</span>
+            </label>
+
+            <p class="account-error" id="account-error" role="status"></p>
+
+            <button class="account-submit" type="submit" id="account-submit">登录</button>
+
+            <div class="account-links">
+              <button type="button" id="account-register">注册账号</button>
+              <button type="button" id="account-forgot">忘记密码</button>
+            </div>
+          </form>
+        </section>
+
         <section class="screen diary-screen active" id="screen-diary">
           <header class="page-head">
             <button class="ghost-btn" type="button" aria-label="返回">‹</button>
             <div>
-              <p>My Journal</p>
-              <h1>我的日记</h1>
+              <p>Time Echo</p>
+              <h1>时光回响</h1>
             </div>
-            <button class="small-pill" type="button" data-go="tree">月</button>
+            <button class="small-pill" type="button" data-go="tree">会员</button>
           </header>
 
           <div class="week-switch">
-            <button type="button">‹</button>
-            <strong>2026年第12周</strong>
-            <button type="button">›</button>
+            <button type="button" data-week-prev aria-label="上一周">‹</button>
+            <div class="date-picker" aria-label="选择日期">
+              <div class="date-selectors">
+                <label>
+                  <select id="year-select" aria-label="选择年份"></select>
+                  <span>年</span>
+                </label>
+                <label>
+                  <select id="month-select" aria-label="选择月份"></select>
+                  <span>月</span>
+                </label>
+                <label>
+                  <select id="day-select" aria-label="选择日期"></select>
+                  <span>日</span>
+                </label>
+              </div>
+              <strong id="week-title">2024年第1周</strong>
+            </div>
+            <button type="button" data-week-next aria-label="下一周">›</button>
           </div>
 
-          <div class="calendar-row" aria-label="本周日期">
-            <span>日<em>22</em></span>
-            <span>一<em>23</em></span>
-            <span class="has-log">二<em>24</em></span>
-            <span class="has-log">三<em>25</em></span>
-            <span class="has-log">四<em>26</em></span>
-            <span class="selected">五<em>27</em></span>
-            <span>六<em>28</em></span>
-          </div>
+          <div class="calendar-row" id="calendar-row" aria-label="本周日期"></div>
 
           <div class="range-tabs">
-            <button class="active" type="button">本周</button>
-            <button type="button">本月</button>
+            <button class="active" type="button">本日</button>
+            <button type="button">本周</button>
           </div>
+
+          <section class="soul-widget">
+            <div>
+              <span>桌面互动挂件</span>
+              <p id="soul-question">你今天有什么不开心的事吗？</p>
+            </div>
+            <button type="button" id="refresh-question" aria-label="换一个问题">↻</button>
+            <button type="button" data-go="write">立即记录</button>
+          </section>
+
+          <section class="capture-strip">
+            <div>
+              <strong>10 秒快速记录</strong>
+              <p>无需标题、无需分类，想到什么先留下来。</p>
+            </div>
+            <button type="button" data-go="write">开始</button>
+          </section>
 
           <article class="ai-summary">
             <div class="summary-meta">
-              <span>3月22日 - 28日</span>
-              <span>10天 · 1301字</span>
+              <span>今日为您复盘</span>
             </div>
             <p id="ai-summary-text">
-              这段日子里，你从第一次打招呼开始熟悉啦。你分享过升温时想煮番茄鸡蛋面的小期待，也记录了工作压力大时偷偷放慢呼吸的瞬间。那些小小的生活皱褶，都藏着温暖的光。
+              这周你反复写到“想把事情做好”和“害怕被突然打断”。系统把它们整理成一个正在出现的人生课题：你需要更稳定的节奏，也需要允许自己慢一点。
             </p>
-            <button class="text-link" type="button" id="regenerate-summary">重新生成</button>
+            <button class="text-link" type="button" id="regenerate-summary">新的探索</button>
           </article>
+
+          <section class="instant-layer">
+            <div class="instant-head">
+              <div>
+                <p>First Day Value</p>
+                <h2>第一天即可体验</h2>
+              </div>
+              <span>即时反馈</span>
+            </div>
+
+            <article class="instant-card summary">
+              <span>每日智能小结</span>
+              <p id="daily-brief">今天的记录里，压力来自临时打断，恢复感来自热食、夜风与独处。先照顾节奏，再追赶结果。</p>
+            </article>
+
+            <article class="instant-card praise">
+              <span>每日真诚夸夸</span>
+              <p id="daily-praise">你没有把疲惫藏起来，而是愿意诚实地写下它。这不是脆弱，是你开始照顾自己的证据。</p>
+              <button type="button" id="refresh-praise">换一句</button>
+            </article>
+
+            <article class="instant-card emotion">
+              <span>情绪清理引导</span>
+              <p id="emotion-guide">先问自己：这份情绪是在提醒我需要休息、边界，还是被理解？</p>
+              <div class="emotion-actions">
+                <button type="button" data-emotion-step="休息">需要休息</button>
+                <button type="button" data-emotion-step="边界">需要边界</button>
+                <button type="button" data-emotion-step="理解">需要理解</button>
+              </div>
+            </article>
+          </section>
+
+          <section class="insight-panel">
+            <div class="panel-title">
+              <div>
+                <p>Growth Ledger</p>
+                <h2>人生课题台账</h2>
+              </div>
+              <span>本月更新 3 项</span>
+            </div>
+            <article class="topic-card">
+              <strong>能量管理</strong>
+              <p>夜间疲惫、周五逃避感出现 4 次，建议从低负担恢复任务开始。</p>
+              <div><span style="width: 72%"></span></div>
+            </article>
+            <article class="topic-card">
+              <strong>职业探索</strong>
+              <p>你在“深度工作”和“被打断”之间摇摆，适合先记录高能量工作片段。</p>
+              <div><span style="width: 54%"></span></div>
+            </article>
+            <label class="memory-search">
+              <span>问问过去的我</span>
+              <input type="text" value="我上次觉得很有力量，是因为什么？" aria-label="自然语言记忆检索" />
+            </label>
+          </section>
 
           <div class="entry-list">
             <article class="entry-card">
               <time>16:30</time>
-              <span>117字</span>
-              <p>还有两小时就下班啦。本来今天打算继续捣鼓空气炸锅做蛋糕，结果下午被老板突然拉去谈话了。</p>
+              <span>117字 · 工作压力</span>
+              <p>还有两小时就下班啦。本来今天想继续捣鼓空气炸锅做蛋糕，结果下午被临时谈话打断，心里一下子绷紧了。</p>
             </article>
             <article class="entry-card">
               <time>14:40</time>
-              <span>158字</span>
+              <span>158字 · 关系能量</span>
               <p>终于到周五啦。明天要跟朋友见面，突然有点期待，也有点想躲回自己的小房间。</p>
             </article>
           </div>
+
+          <p class="privacy-note">复盘结果仅用于自我探索。你的记录支持导出、删除和本地优先保存，企业端只展示匿名趋势。</p>
         </section>
 
         <section class="screen tree-screen" id="screen-tree">
           <header class="page-head">
             <button class="ghost-btn" type="button" data-go="diary">‹</button>
             <div>
-              <p>Daily Seed</p>
-              <h1>种一棵情绪小树</h1>
+              <p>Growth Member</p>
+              <h1>成长会员权益</h1>
             </div>
             <button class="small-pill" type="button" data-go="write">打卡</button>
           </header>
@@ -81,10 +217,28 @@
             </div>
             <div>
               <p>连续记录 18 天</p>
-              <h2>扎根中</h2>
-              <span>根已经越扎越深了</span>
+              <h2>情绪资产树</h2>
+              <span>长期记录会长成可复盘的个人成长资产</span>
             </div>
           </article>
+
+          <section class="plan-cards">
+            <article>
+              <span>Free</span>
+              <strong>基础记录</strong>
+              <p>文字、心情标签、每日一次小结、那年今日。</p>
+            </article>
+            <article class="featured">
+              <span>Growth</span>
+              <strong>成长会员</strong>
+              <p>不限 AI 小结、周报月报、情绪趋势和人生课题台账。</p>
+            </article>
+            <article>
+              <span>Deep</span>
+              <strong>深度会员</strong>
+              <p>关系复盘、职业探索、年度成长白皮书和高频 AI 顾问。</p>
+            </article>
+          </section>
 
           <div class="color-picker" aria-label="选择小树颜色">
             <button class="active" type="button" data-tree-color="green"></button>
@@ -96,19 +250,19 @@
           <div class="growth-list">
             <article>
               <div class="mini-tree seed"></div>
-              <div><strong>小树苗</strong><p>第 7-13 天 · 开始晓得到阳光了</p></div>
+              <div><strong>快速记录</strong><p>第 1-7 天 · 先用一句话留下生活片段</p></div>
             </article>
             <article class="active">
               <div class="mini-tree root"></div>
-              <div><strong>扎根中</strong><p>第 14-29 天 · 根已经越扎越深了</p></div>
+              <div><strong>每日复盘</strong><p>第 8-29 天 · 看见重复出现的情绪和事件</p></div>
             </article>
             <article>
               <div class="mini-tree young"></div>
-              <div><strong>一棵小树</strong><p>第 30-59 天 · 故事长成了枝丫</p></div>
+              <div><strong>记忆检索</strong><p>第 30-59 天 · 像问朋友一样查找过去的自己</p></div>
             </article>
             <article>
               <div class="mini-tree lush"></div>
-              <div><strong>枝繁叶茂</strong><p>第 60-119 天 · 记忆撑起了树冠</p></div>
+              <div><strong>年度白皮书</strong><p>第 60 天后 · 形成情绪、关系、目标和价值偏好报告</p></div>
             </article>
           </div>
         </section>
@@ -129,13 +283,13 @@
             <h2><span>25<sup>th</sup></span> April · Journal</h2>
             <div class="timeline">
               <span>12 AM</span>
-              <div class="block sleep"><strong>Sleep</strong><em>12:30 am - 6:50 am</em><p>Sleep covered a longer stretch of the day.</p></div>
+              <div class="block sleep"><strong>睡眠恢复</strong><em>12:30 am - 6:50 am</em><p>系统标记为低能量恢复时间。</p></div>
               <span>8 AM</span>
-              <div class="block quiet"><strong>深呼吸</strong><em>tap for details</em></div>
+              <div class="block quiet"><strong>十秒记录</strong><em>一句话 · 呼吸练习后轻松一点</em></div>
               <span>9 AM</span>
-              <div class="block breakfast"><strong>Breakfast</strong><em>8:35 am - 8:55 am</em></div>
+              <div class="block breakfast"><strong>早餐</strong><em>8:35 am - 8:55 am</em></div>
               <span>10 AM</span>
-              <div class="block work"><strong>Deep Work</strong><em>10 am - 12:10 pm</em><p>把混乱的念头整理成了一页草稿。</p><b>Meeting</b></div>
+              <div class="block work"><strong>深度工作</strong><em>10 am - 12:10 pm</em><p>把混乱的念头整理成一页草稿，职业探索课题增加一条证据。</p><b>课题 +1</b></div>
             </div>
           </article>
         </section>
@@ -144,18 +298,18 @@
           <header class="page-head">
             <button class="ghost-btn" type="button" data-go="diary">‹</button>
             <div>
-              <p>Sticky Wall</p>
-              <h1>便签墙</h1>
+              <p>Memory Cards</p>
+              <h1>长期记忆卡片</h1>
             </div>
             <button class="ghost-btn" type="button" aria-label="更多">···</button>
           </header>
           <div class="note-grid">
-            <article class="note peach"><i></i><p>真的好困但睡不着。好累呀，每天都好累。</p><span>夏七月 05-10</span></article>
-            <article class="note yellow"><i></i><p>凌晨夜骑回到家，楼下一个人都没有。</p><span>匿名 05-10</span></article>
-            <article class="note cream"><i></i><p>刚合上电脑，这个点还在墙上写字的大概都欠睡眠一个正式道歉。</p><span>周处 05-10</span></article>
-            <article class="note purple"><i></i><p>雨声倾盆如海，残局黑白未解。今晚榻侧无眠，只余一炉香。</p><span>匿名 05-10</span></article>
-            <article class="note cream"><i></i><p>总有一些话在纸上写得工整，到嘴边就变成了“茶凉了”。</p><span>匿名 05-10</span></article>
-            <article class="note peach small"><i></i><p>测试天边除去了我的黑眼圈。</p><span>眼圈</span></article>
+            <article class="note peach"><i></i><p>真的好困但睡不着。系统把它归入“能量管理”。</p><span>情绪线索 05-10</span></article>
+            <article class="note yellow"><i></i><p>凌晨夜骑回到家，楼下一个人都没有。</p><span>生活片段 05-10</span></article>
+            <article class="note cream"><i></i><p>刚合上电脑，这个点还在写字，说明工作边界又变模糊了。</p><span>压力来源 05-10</span></article>
+            <article class="note purple"><i></i><p>雨声倾盆如海，今晚不急着分析，只先把感受放下来。</p><span>非诊断提醒</span></article>
+            <article class="note cream"><i></i><p>“上次觉得有力量”出现在 3 月 18 日，关键词是同伴、完成和被看见。</p><span>记忆检索</span></article>
+            <article class="note peach small"><i></i><p>可导出、可删除、可关闭 AI 分析。</p><span>隐私控制</span></article>
           </div>
           <button class="float-pen" type="button" data-go="write" aria-label="写便签"></button>
         </section>
@@ -163,21 +317,25 @@
         <section class="screen hole-screen" id="screen-hole">
           <article class="memory-page">
             <header>
-              <h1>拾遗集</h1>
-              <p>2025/09/04</p>
+              <h1>年度成长白皮书</h1>
+              <p>2026 SAMPLE</p>
             </header>
             <div class="receipt">
-              <p>-- 便利店收据 --</p>
-              <strong>草莓味牛奶 ×1 ··· ¥1,500</strong>
-              <em>她还是和小时候一样，喜欢草莓味的一切。</em>
+              <p>-- 成长摘要 --</p>
+              <strong>情绪 · 关系 · 目标 · 习惯 · 价值偏好</strong>
+              <em>今年你最常提到的不是“焦虑”，而是“想重新掌握节奏”。</em>
             </div>
-            <div class="paper-note">“下雨了，又降温了。”<br />姐姐，不喜欢下雨天，打给你听。</div>
+            <div class="paper-note">过往不是用来困住你的答案，而是提醒你看见反复出现的风。先从一个微小行动开始，给明天留一点可改变的余地。</div>
             <div class="emotion-score">
-              <p><span>难过指数</span><b>☆☆☆☆☆</b></p>
-              <p><span>思念指数</span><b>★★★★★</b></p>
-              <p><span>执念指数</span><b>★★★★★</b></p>
-              <p><span>情绪备注</span><em>这仍是在便利店里的小秘密。</em></p>
+              <p><span>能量波动</span><b>★★★★☆</b></p>
+              <p><span>关系支持</span><b>★★★☆☆</b></p>
+              <p><span>目标清晰</span><b>★★★★☆</b></p>
+              <p><span>年度课题</span><em>在稳定节奏里重新建立主动感。</em></p>
             </div>
+            <section class="org-card">
+              <strong>企业匿名洞察</strong>
+              <p>组织端只看汇总趋势，不展示个人日记原文、个人心理标签或诊断结论。</p>
+            </section>
             <div class="page-actions">
               <button type="button">← 上一页</button>
               <button type="button">下一页 →</button>
@@ -187,18 +345,68 @@
 
         <section class="screen write-screen" id="screen-write">
           <header class="write-head">
-            <button type="button" data-go="notes">能量便签</button>
+            <button type="button" data-go="notes">十秒记录</button>
             <button type="button">关闭</button>
           </header>
+          <section class="quick-record">
+            <div class="quick-record-head">
+              <div>
+                <span>Zero Burden</span>
+                <h2>零负担记录</h2>
+              </div>
+              <strong id="quick-timer">10秒</strong>
+            </div>
+
+            <textarea
+              id="quick-record-input"
+              placeholder="不用写完整句子。此刻想到什么，就先放在这里。"
+              aria-label="十秒快速记录输入框"
+            ></textarea>
+
+            <div class="record-tools" aria-label="选择记录形式">
+              <button class="active" type="button" data-record-type="文字">文字</button>
+              <button type="button" data-record-type="语音">语音</button>
+              <button type="button" data-record-type="图片">图片</button>
+              <button type="button" data-record-type="位置">位置</button>
+              <button type="button" data-record-type="心情">心情</button>
+            </div>
+
+            <div class="mood-tags" aria-label="选择心情标签">
+              <button type="button" data-mood-tag="平静">平静</button>
+              <button type="button" data-mood-tag="疲惫">疲惫</button>
+              <button type="button" data-mood-tag="期待">期待</button>
+              <button type="button" data-mood-tag="困惑">困惑</button>
+            </div>
+
+            <div class="quick-actions">
+              <span id="quick-record-status">支持文字、语音、图片、位置与心情标签。</span>
+              <button type="button" id="save-quick-record">保存记录</button>
+            </div>
+          </section>
+
+          <section class="passive-data">
+            <div class="passive-head">
+              <div>
+                <span>用户授权</span>
+                <h2>被动数据采集</h2>
+              </div>
+              <small>仅用于丰富个人画像</small>
+            </div>
+            <label><input type="checkbox" checked /> 屏幕使用时长与 APP 分布</label>
+            <label><input type="checkbox" checked /> 运动、睡眠与地理位置轨迹</label>
+            <label><input type="checkbox" /> 日历事件与待办完成情况</label>
+            <p>这些数据在 demo 中只做界面模拟，不上传服务器；正式产品应提供清晰授权、关闭、导出和删除能力。</p>
+          </section>
+
           <article class="writing-paper">
-            <p class="lead">凌晨夜骑回到家，楼下一个人都没有</p>
-            <p>路灯比我先到，影子陪我停了一会儿。刚才还挺想发消息的，硬是在又想泡一碗辣白菜拉面。</p>
-            <p>便利店应该还开着吧，一算了，这个点微波炉都该休息了。</p>
-            <footer>Alan · 2026-05-10 02:46</footer>
+            <p class="lead">一句话、一次语音、一张图片，都可以成为未来的线索。</p>
+            <p>凌晨夜骑回到家，楼下一个人都没有。路灯比我先到，影子陪我停了一会儿。</p>
+            <p>今天先不写长篇，只把最真实的一瞬间留下来。</p>
+            <footer>Alan · 2026-05-10 02:46 · 已加入能量管理课题</footer>
           </article>
           <section class="comment-box">
-            <h2>评论</h2>
-            <div class="comment"><strong>神野</strong><span>5/10 09:02</span><p>凌晨夜骑回来，楼下没人但有路灯，这个我熟。</p></div>
+            <h2>AI 顾问</h2>
+            <div class="comment"><strong>时光回响</strong><span>5/10 09:02</span><p>我会先把这条记录放入“夜间恢复”和“关系能量”两条线索。需要时，你可以让我回看相似的晚上。</p></div>
             <label>
               <textarea placeholder="写评论"></textarea>
             </label>
@@ -211,10 +419,10 @@
 
         <nav class="bottom-nav" aria-label="AI 日记导航">
           <button class="active" type="button" data-go="diary"><span></span>日记</button>
-          <button type="button" data-go="schedule"><span></span>日程</button>
-          <button type="button" data-go="notes"><span></span>便签</button>
-          <button type="button" data-go="hole"><span></span>树洞</button>
-          <button type="button" data-go="write"><span></span>写作</button>
+          <button type="button" data-go="schedule"><span></span>复盘</button>
+          <button type="button" data-go="notes"><span></span>记忆</button>
+          <button type="button" data-go="hole"><span></span>报告</button>
+          <button type="button" data-go="write"><span></span>记录</button>
         </nav>
       </section>
     </main>
